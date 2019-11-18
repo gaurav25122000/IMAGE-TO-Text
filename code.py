@@ -135,26 +135,8 @@ def process(path,down):
                 Age.append(0)
             if sx==0:
                 Sex.append('deleted')
-    #         text = pytesseract.image_to_string(j)
-    #         text = text.split(sep = '\n')
-    #         while '' in text:
-    #             text.remove('')
-    #         for z in range(len(text)):
-    #             if text[z].startswith('Name'):
-    #                 a = text[z]
-    #                 a = a.split(sep = 'Photo')[0]
-    #                 a = a.split(sep = 'House')[0]
-    #                 a = a.split(sep = 'Avail')[0]
-    #                 try:
-    #                     Name.append(a.split(sep = ':')[1:][0])
-    #                 except IndexError:
-    #                     Name.append(a)
         try:
             assert len(Name)==len(FName)==len(Vids)
-    #         for (g,h,k) in zip(Name,FName,Vids):
-    #             Vidlist.append(k)
-    #             Namelist.append(h)
-    #             FNamelist.append(g)
             Namelist.extend(Name)
             FNamelist.extend(FName)
             Vidlist.extend(Vids)

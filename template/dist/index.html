@@ -1,0 +1,160 @@
+<!--<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Electoral Roll Parser</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:100,300'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="./js/bootstrap.js"></script>
+  <script src="./js/materialize.js"></script>
+  <script src="./js/jquery.js"></script>
+  <link rel="stylesheet" href="./css/bootstrap.css" />
+  <link rel="stylesheet" href="./css/font-awesome.min.css"> 
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/materialize.css">
+
+</head>
+<body>-->
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <title>Image Parser</title>
+            <meta name="description" content="This is the description">
+            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}"/>
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+            <link rel="stylesheet" href="/css/style.css">
+            <link rel="stylesheet" href="/css/bootstrap.css">
+            <!--<link rel="stylesheet" href="./css/materialize.css" />-->
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+            <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+            <link href="https://fonts.googleapis.com/css?family=Kaushan+Script&display=swap" rel="stylesheet">
+
+            <!-- Compiled and minified CSS 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.css">-->
+          
+        <!-- Compiled and minified JavaScript
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"></script>-->
+                
+            <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}" />
+    <link rel="stylesheet" href="../../static/css/font-awesome.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+       
+       <!--sweetalert-->
+       <script src="{{ url_for('static', filename='css/Sweet Alert/sweetalert.min.js') }}"></script>
+       <script src="../../static/css/Sweet Alert/sweetalert.min.js"></script>
+        </head>
+      
+  <body>
+
+
+<!-- partial:index.partial.html -->
+
+<!--navbar-->
+<nav class="navbar fixed-top justify-content-center navbarstyle text-center">
+
+    <!-- Links -->
+    <ul class="navbar-nav">
+      <li class="nav-item navtext">
+          <h1>Image to text Convertor</h1>
+      </li>
+    </ul>
+  
+</nav>
+
+<!-- Modal Trigger -->
+<div class="jumbotron img-jumbo mb-0" style="margin-top: 70px">
+  <div class="container">
+      <div class="jumbo-content text-center">
+        <h2 class="text-white"> WELCOME!<br /> Upload the file below <br />Wait for some time the file will be automatically downloaded</h2>
+        <a class="btn bg-teal pulse" data-toggle="modal" data-target="#myModal">
+            <i class="fa fa-lg  fa-cloud-upload" aria-hidden="true"></i> UPLOAD
+      </a>
+      </div>
+  </div>
+</div>
+
+
+<!-- Modal Structure -->
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-body" style="padding: 0%">
+      <form action = "http://localhost:5000/uploader" method = "POST" 
+      enctype = "multipart/form-data">
+      <div class="upload">
+          <div class="upload-files">
+           <header>
+            <p>
+             <i class="fa fa-2x  fa-cloud-upload" aria-hidden="true"></i>
+             <span class="up">up</span>
+             <span class="load">load</span>
+            </p>
+           </header>
+           <div class="body" id="drop">
+         
+            <i class="fa fa-2x pl-0 fa-file-text-o pointer-none" aria-hidden="true"></i>
+            <p class="pointer-none"><b>Drag and drop</b> files here <br /> or <br /><a href="" class="btn bg-teal" id="triggerFile">BROWSE FILES</a></p>
+               <input type="file" name = "file" multiple="multiple" />
+           </div>
+           <footer>
+            <div class="divider">
+             <span><AR>FILES</AR></span>
+            </div>
+            <div class="list-files">
+             <!--   template   -->
+            </div>
+           
+               <button class="importar" type = "submit">UPDATE FILES</button>
+           </footer>
+          </div>
+         </div>
+        </form>  
+    </div>
+    </div>
+  </div>
+</div>
+<div class="jumbotron bg-grey mb-0">
+  <div class="container">
+      <h2 class="navtext">CONTRIBUTORS :</h2><br/>
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-6 mb-5">
+          <h3>Gaurav Narula</h3>
+          <h4>gnarula438@gmail.com</h4>
+          <div class="d-inline-flex">
+            <a href="https://github.com/gaurav25122000/" class="fa fa-2x  fa-github mr-2"></a>
+            <a href="https://www.linkedin.com/in/gaurav-narula-40152b172/" class="fa fa-lg fa-linkedin mr-2"></a>
+            
+          </div>
+        </div>
+        </div>
+  </div>
+</div>
+     <!--footer-->
+     <div class="container-fluid text-white bg-dark mb-0 mt-0 p-3 text-center">
+      Copyright © 2019 TechMillenials Inc. All rights reserved.
+     </div>
+<script src="../../static/js/jquery.js"></script>
+<script src="../../static/js/script.js"></script>
+<script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>
